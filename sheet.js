@@ -7,7 +7,7 @@ var BOOK_LIST_TAB = '一覧',
 
 var BOOK_SAVE_TAB = '登録';
 
-
+var AMAZON_LINK = "https://www.amazon.co.jp"
 /*
 指定列(ex."B")の最終行を求める
 */
@@ -51,6 +51,16 @@ function saveCell(data) {
     var lastRow = getLastRowWithValue(sheet, BASE_COL);
     var title = data['items'][0]['volumeInfo']['title'];
     var isbn = data['isbn'];
+    var industryIdentifiers = data['items'][0]['volumeInfo']['industryIdentifiers'];
+    var type = "";
+    for (var i=0; i<industryIdentifiers.length; i++) {
+        var industryIdentifier = industryIdentifiers[i];
+        if (industryIdentifier['type'] == "ISBN_10") {
+            type = industryIdentifier['identifier']
+        }
+    }
+    var amazonItemLink = AMAZON_LINK + "/dp/"+ type;
     sheet.getRange(BASE_COL+(lastRow+1)).setValue(isbn);
-    sheet.getRange(BOOK_TITLE_COL+(lastRow+1)).setValue(title);
+    sheet.getRange(BOOK_TITLE_COL+(lastRow+1)).setValue('=HYPERLINK("' + amazonItemLink + '","' + title + '")');
 }
+

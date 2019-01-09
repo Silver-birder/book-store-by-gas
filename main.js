@@ -50,7 +50,7 @@ function getWillSaveIsbnList() {
 既に登録しているISBNのリストを取る
 */
 function getSavedIsbnList() {
-    var range = getRangeByColWithListArea();
+    var range = getRangeIsbnByColWithListArea();
     return range.map(function(value) {
         return String(value[0]);
     });

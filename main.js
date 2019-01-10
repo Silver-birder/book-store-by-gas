@@ -2,10 +2,11 @@
 書籍を登録する
 */
 function save() {
+    /*
     if (!confirm("登録しますか？")) {
-        Browser.msgBox("キャンセルしました。");
-        return;
-    }
+      Browser.msgBox("キャンセルしました。");
+      return;
+    }*/
     clearResultWithSaveArea();
 
     var isbnList = getWillSaveIsbnList();

@@ -19,8 +19,6 @@ function sendSlack(message) {
 /*
 返却期限が過ぎているユーザーに通知する
 */
-function announceDeadline(bookTitle, user) {
-    user = "shibamoto";
-    bookTitle = "title";
-    sendSlack("<@"+ user+"> "+ bookTitle+"の返却期限が過ぎています。返却しスプレットシートを更新して下さい。");
+function announceDeadline(user, bookTitle) {
+    sendSlack("<@"+ user+"> 「"+ bookTitle+"」の返却期限が過ぎています。返却しスプレットシートを更新して下さい。");
 }

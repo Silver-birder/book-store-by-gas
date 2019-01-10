@@ -29,3 +29,10 @@ function isbn13to10(isbn13) {
     digits.push(chk_digit);
     return digits.join("");
 }
+
+/*
+2つの日付の差を求める
+ */
+function diffDay(day1, day2) {
+    return Math.ceil((day2 - day1) / 86400000);
+}
